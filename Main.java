@@ -1,9 +1,9 @@
 package sample;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
+
 import javafx.geometry.Insets;
-import javafx.scene.Parent;
+
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -15,6 +15,7 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+
     }
 
 
@@ -39,25 +40,43 @@ public class Main extends Application {
         grossSalaryInput.setPromptText("Gross Salary");
 
 
-         //net salary section
-        /*Label netSalary = new Label("Net Salary");
-        GridPane.setConstraints(netSalary, 10, 26);
-
-        TextField netSalaryInput = new TextField();
-        GridPane.setConstraints(netSalaryInput, 11, 26);
-        netSalaryInput.setPromptText("Net Salary");*/
-
-
-
         //button section
         Button enterButton = new Button("Calculate");
-        GridPane.setConstraints(enterButton, 11, 26);
-
-        //clicked
-        enterButton.setOnAction(e -> enterButtonClicked());
+        GridPane.setConstraints(enterButton, 11, 27);
 
 
-        grid.getChildren().addAll(grossSalary,  grossSalaryInput, enterButton);
+        //net salary section
+        Label netSalary = new Label("Net Salary");
+        GridPane.setConstraints(netSalary, 10, 29);
+
+        Label netSalaryInput = new Label();
+        GridPane.setConstraints(netSalaryInput, 11, 29);
+
+
+
+       enterButton.setOnAction(e -> {
+
+            double inputValue;
+            try {
+                inputValue = Double.parseDouble(grossSalaryInput.getText());
+                SalaryCalculation sc = new SalaryCalculation();
+                double result = sc.netSalaryCalculation(inputValue);
+                netSalaryInput.setText(String.valueOf(result));
+
+            }
+            catch (NumberFormatException ex){
+                System.out.println("Invalid input");
+                ex.printStackTrace();
+
+            }
+            catch (Exception ex){
+                ex.printStackTrace();
+
+            }
+        });
+
+
+        grid.getChildren().addAll(grossSalary, netSalary, netSalaryInput,  grossSalaryInput, enterButton);
 
 
         Scene scene = new Scene(grid, 520, 520);
@@ -65,10 +84,8 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    // enter Button clicked
-    public  void enterButtonClicked() {
 
-    }
+
 
 }
 

@@ -1,5 +1,6 @@
 package sample;
 
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,18 +11,6 @@ import java.io.InputStreamReader;
 public class SalaryCalculation {
 
 
-    public static void main(String[] args) throws IOException {
-        System.out.println("Please fill your Gross Salary");
-
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        double grossSalary = Double.parseDouble(reader.readLine());
-        SalaryCalculation sc = new SalaryCalculation();
-        String s = String.format("%,.2f", sc.netSalaryCalculation(grossSalary));
-
-        System.out.println(s);
-
-
-    }
 
 
     public double netSalaryCalculation(double grossSalary){
@@ -31,9 +20,11 @@ public class SalaryCalculation {
 
             return 0;
 
+
         }
 
-      else if (grossSalary<=120000) {
+
+        else if (grossSalary>=1323 &&grossSalary<=120000) {
             netSalary = grossSalary-grossSalary*0.244-1000;
 
         }

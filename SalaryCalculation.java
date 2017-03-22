@@ -1,9 +1,7 @@
 package sample;
 
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+
 
 /**
  * Created by Anoush Atayan on 1/31/2017.
